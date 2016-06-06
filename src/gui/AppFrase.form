@@ -39,6 +39,8 @@
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="txtAccion" pref="138" max="32767" attributes="0"/>
                               <Component id="txtPersonaje" max="32767" attributes="0"/>
+                              <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel2" alignment="0" min="-2" pref="48" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
@@ -47,13 +49,9 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="txtFrase" min="-2" pref="52" max="-2" attributes="0"/>
                               <Component id="txtLugar" min="-2" pref="138" max="-2" attributes="0"/>
+                              <Component id="jLabel3" alignment="0" min="-2" pref="48" max="-2" attributes="0"/>
+                              <Component id="jLabel4" alignment="0" min="-2" pref="48" max="-2" attributes="0"/>
                           </Group>
-                      </Group>
-                      <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                          <Component id="jLabel4" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jLabel3" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jLabel2" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jLabel1" alignment="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <Component id="btnGenerar" max="32767" attributes="0"/>
@@ -99,9 +97,9 @@
                           <Component id="txtLugar" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="lblLugar" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
                       <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="txtFrase" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="btnGenerar" min="-2" max="-2" attributes="0"/>
@@ -121,7 +119,7 @@
     </Component>
     <Component class="javax.swing.JTextField" name="txtPersonaje">
       <Events>
-        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtPersonajeKeyReleased"/>
+        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtPersonajeKeyPressed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
@@ -131,7 +129,7 @@
     </Component>
     <Component class="javax.swing.JTextField" name="txtAccion">
       <Events>
-        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtAccionKeyReleased"/>
+        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtAccionKeyPressed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel3">
@@ -141,7 +139,7 @@
     </Component>
     <Component class="javax.swing.JTextField" name="txtLugar">
       <Events>
-        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtLugarKeyReleased"/>
+        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtLugarKeyPressed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel4">
@@ -150,6 +148,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtFrase">
+      <Events>
+        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtFraseKeyPressed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnGenerar">
       <Properties>

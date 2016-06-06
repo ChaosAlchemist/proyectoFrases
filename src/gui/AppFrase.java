@@ -67,28 +67,34 @@ public class AppFrase extends javax.swing.JFrame {
         jLabel1.setText("Personaje");
 
         txtPersonaje.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtPersonajeKeyReleased(evt);
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtPersonajeKeyPressed(evt);
             }
         });
 
         jLabel2.setText("Acción");
 
         txtAccion.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtAccionKeyReleased(evt);
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtAccionKeyPressed(evt);
             }
         });
 
         jLabel3.setText("Lugar");
 
         txtLugar.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtLugarKeyReleased(evt);
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtLugarKeyPressed(evt);
             }
         });
 
         jLabel4.setText("Frases");
+
+        txtFrase.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtFraseKeyPressed(evt);
+            }
+        });
 
         btnGenerar.setText("Generar");
         btnGenerar.addActionListener(new java.awt.event.ActionListener() {
@@ -135,18 +141,17 @@ public class AppFrase extends javax.swing.JFrame {
                             .addGap(18, 18, 18)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(txtAccion, javax.swing.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE)
-                                .addComponent(txtPersonaje)))
+                                .addComponent(txtPersonaje)
+                                .addComponent(jLabel1)
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                             .addComponent(lblLugar, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(18, 18, 18)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(txtFrase, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txtLugar, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addComponent(txtLugar, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addComponent(btnGenerar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -181,9 +186,9 @@ public class AppFrase extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtLugar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblLugar))
-                        .addGap(18, 18, 18)
+                        .addGap(13, 13, 13)
                         .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txtFrase, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btnGenerar))
@@ -194,64 +199,91 @@ public class AppFrase extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtPersonajeKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPersonajeKeyReleased
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            try {
-                String personaje = txtPersonaje.getText();
-                Personaje p = new Personaje(personaje);
-                d.insertar(p);
-                lblPersonaje.setText(String.valueOf(d.getRango(d.PERSONAJE)));
-                txtPersonaje.setText(null);
-            } catch (SQLException ex) {
-                Logger.getLogger(AppFrase.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-    }//GEN-LAST:event_txtPersonajeKeyReleased
-
-    private void txtAccionKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAccionKeyReleased
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            try {
-                String accion = txtAccion.getText();
-                Accion a = new Accion(accion);
-                d.insertar(a);
-                lblAccion.setText(String.valueOf(d.getRango(d.ACCION)));
-                txtAccion.setText(null);
-            } catch (SQLException ex) {
-                Logger.getLogger(AppFrase.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-    }//GEN-LAST:event_txtAccionKeyReleased
-
-    private void txtLugarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtLugarKeyReleased
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            try {
-                String lugar = txtLugar.getText();
-                Lugar l = new Lugar(lugar);
-                d.insertar(l);
-                lblLugar.setText(String.valueOf(d.getRango(d.LUGAR)));
-                txtLugar.setText(null);
-            } catch (SQLException ex) {
-                Logger.getLogger(AppFrase.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-    }//GEN-LAST:event_txtLugarKeyReleased
-
     private void btnGenerarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerarActionPerformed
         try {
-            int cantidad = Integer.parseInt(txtFrase.getText());
-            for (int i = 0; i < cantidad; i++) {
-                String frase = "";
-                try {
-                    frase = d.generarFrase();
-                } catch (SQLException ex) {
-                    Logger.getLogger(AppFrase.class.getName()).log(Level.SEVERE, null, ex);
+            if (d.getRango(d.PERSONAJE) == 0 || d.getRango(d.ACCION) == 0 || d.getRango(d.LUGAR) == 0) {
+                JOptionPane.showMessageDialog(this, "Uno o más componentes están vacíos", "ERROR", JOptionPane.ERROR_MESSAGE);
+            } else {
+                int cantidad = Integer.parseInt(txtFrase.getText());
+                for (int i = 0; i < cantidad; i++) {
+                    String frase = "";
+                    try {
+                        frase = d.generarFrase();
+                    } catch (SQLException ex) {
+                        Logger.getLogger(AppFrase.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    taFrases.append(frase + "\n" + "\n");
                 }
-                taFrases.append(frase + "\n"+"\n");
             }
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "Ingrese solo numeros en la cantidad de frase");
+        } catch (SQLException ex) {
+            Logger.getLogger(AppFrase.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnGenerarActionPerformed
+
+    private void txtFraseKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFraseKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            btnGenerar.doClick();
+        }
+    }//GEN-LAST:event_txtFraseKeyPressed
+
+    private void txtPersonajeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPersonajeKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            try {
+                String personaje = txtPersonaje.getText();
+
+                if (personaje.equalsIgnoreCase("")) {
+                    JOptionPane.showMessageDialog(this, "Este campo no puede estar vacío", "ERROR", JOptionPane.ERROR_MESSAGE);
+                } else {
+
+                    Personaje p = new Personaje(personaje);
+                    d.insertar(p);
+                    lblPersonaje.setText(String.valueOf(d.getRango(d.PERSONAJE)));
+                    txtPersonaje.setText(null);
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(AppFrase.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_txtPersonajeKeyPressed
+
+    private void txtAccionKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAccionKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            try {
+                String accion = txtAccion.getText();
+                if (accion.equalsIgnoreCase("")) {
+                    JOptionPane.showMessageDialog(this, "Este campo no puede estar vacío", "ERROR", JOptionPane.ERROR_MESSAGE);
+                } else {
+                    Accion a = new Accion(accion);
+                    d.insertar(a);
+                    lblAccion.setText(String.valueOf(d.getRango(d.ACCION)));
+                    txtAccion.setText(null);
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(AppFrase.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_txtAccionKeyPressed
+
+    private void txtLugarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtLugarKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            try {
+                String lugar = txtLugar.getText();
+                if (lugar.equalsIgnoreCase("")) {
+                    JOptionPane.showMessageDialog(this, "Este campo no puede estar vacío", "ERROR", JOptionPane.ERROR_MESSAGE);
+                } else {
+
+                    Lugar l = new Lugar(lugar);
+                    d.insertar(l);
+                    lblLugar.setText(String.valueOf(d.getRango(d.LUGAR)));
+                    txtLugar.setText(null);
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(AppFrase.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_txtLugarKeyPressed
 
     /**
      * @param args the command line arguments
