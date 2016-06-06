@@ -39,9 +39,14 @@ public class Data {
 
         c.ejecutar(q);
     }
+    
 
-    public String generarFrase() {
-        q = "select "
+    public String generarFrase(int id) {
+        String frase = "";
+        q = "select nombre from personaje where id = "+id;
+        
+        
+        
     }
 
 }
