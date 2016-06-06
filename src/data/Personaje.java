@@ -11,10 +11,10 @@ package data;
  */
 public class Personaje {
     private int id;
-    private String nobmre;
+    private String nombre;
 
-    public Personaje(String nobmre) {
-        this.nobmre = nobmre;
+    public Personaje(String nombre) {
+        this.nombre = nombre;
     }
 
     public int getId() {
@@ -25,12 +25,12 @@ public class Personaje {
         this.id = id;
     }
 
-    public String getNobmre() {
-        return nobmre;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setNobmre(String nobmre) {
-        this.nobmre = nobmre;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
     
     
