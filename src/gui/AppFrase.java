@@ -205,15 +205,10 @@ public class AppFrase extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Uno o más componentes están vacíos", "ERROR", JOptionPane.ERROR_MESSAGE);
             } else {
                 int cantidad = Integer.parseInt(txtFrase.getText());
-                for (int i = 0; i < cantidad; i++) {
-                    String frase = "";
-                    try {
-                        frase = d.generarFrase();
-                    } catch (SQLException ex) {
-                        Logger.getLogger(AppFrase.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                    taFrases.append(frase + "\n" + "\n");
-                }
+                
+                Thread h = new Thread(new HiloFor(taFrases, 2000, cantidad));
+                h.start();
+
             }
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "Ingrese solo numeros en la cantidad de frase");
