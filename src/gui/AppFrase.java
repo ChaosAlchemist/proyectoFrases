@@ -19,6 +19,7 @@ import javax.swing.UIManager;
  * @author Emilio
  */
 public class AppFrase extends javax.swing.JFrame {
+
     private Data d;
 
     /**
@@ -27,9 +28,12 @@ public class AppFrase extends javax.swing.JFrame {
     public AppFrase() {
         initComponents();
         try {
-            d= new Data();
+            d = new Data();
+            lblPersonaje.setText(String.valueOf(d.getRango(d.PERSONAJE)));
+            lblAccion.setText(String.valueOf(d.getRango(d.ACCION)));
+            lblLugar.setText(String.valueOf(d.getRango(d.LUGAR)));
         } catch (SQLException ex) {
-            System.out.println("Error de conexion: "+ex.getMessage());
+            System.out.println("Error de conexion: " + ex.getMessage());
         }
     }
 
@@ -57,7 +61,6 @@ public class AppFrase extends javax.swing.JFrame {
         lblLugar = new javax.swing.JLabel();
         lblPersonaje = new javax.swing.JLabel();
         lblAccion = new javax.swing.JLabel();
-        lblFrases = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -94,8 +97,11 @@ public class AppFrase extends javax.swing.JFrame {
             }
         });
 
+        taFrases.setEditable(false);
         taFrases.setColumns(20);
+        taFrases.setLineWrap(true);
         taFrases.setRows(5);
+        taFrases.setWrapStyleWord(true);
         jScrollPane1.setViewportView(taFrases);
 
         jLabel5.setText("Frases");
@@ -111,10 +117,6 @@ public class AppFrase extends javax.swing.JFrame {
         lblAccion.setForeground(new java.awt.Color(255, 0, 0));
         lblAccion.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblAccion.setText("#");
-
-        lblFrases.setForeground(new java.awt.Color(255, 0, 0));
-        lblFrases.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblFrases.setText("#");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -135,9 +137,7 @@ public class AppFrase extends javax.swing.JFrame {
                                 .addComponent(txtAccion, javax.swing.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE)
                                 .addComponent(txtPersonaje)))
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(lblLugar, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(lblFrases, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lblLugar, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(18, 18, 18)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(txtFrase, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -184,9 +184,7 @@ public class AppFrase extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtFrase, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblFrases))
+                        .addComponent(txtFrase, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btnGenerar))
                     .addComponent(jScrollPane1))
@@ -197,29 +195,44 @@ public class AppFrase extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtPersonajeKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPersonajeKeyReleased
-        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            String personaje=txtPersonaje.getText();
-            Personaje p=new Personaje(personaje);
-            d.insertar(p);
-            txtPersonaje.setText(null);
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            try {
+                String personaje = txtPersonaje.getText();
+                Personaje p = new Personaje(personaje);
+                d.insertar(p);
+                lblPersonaje.setText(String.valueOf(d.getRango(d.PERSONAJE)));
+                txtPersonaje.setText(null);
+            } catch (SQLException ex) {
+                Logger.getLogger(AppFrase.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }//GEN-LAST:event_txtPersonajeKeyReleased
 
     private void txtAccionKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAccionKeyReleased
-        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            String accion=txtAccion.getText();
-            Accion a=new Accion(accion);
-            d.insertar(a);
-            txtAccion.setText(null);
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            try {
+                String accion = txtAccion.getText();
+                Accion a = new Accion(accion);
+                d.insertar(a);
+                lblAccion.setText(String.valueOf(d.getRango(d.ACCION)));
+                txtAccion.setText(null);
+            } catch (SQLException ex) {
+                Logger.getLogger(AppFrase.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }//GEN-LAST:event_txtAccionKeyReleased
 
     private void txtLugarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtLugarKeyReleased
-        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            String lugar=txtLugar.getText();
-            Lugar l=new Lugar(lugar);
-            d.insertar(l);
-            txtLugar.setText(null);
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            try {
+                String lugar = txtLugar.getText();
+                Lugar l = new Lugar(lugar);
+                d.insertar(l);
+                lblLugar.setText(String.valueOf(d.getRango(d.LUGAR)));
+                txtLugar.setText(null);
+            } catch (SQLException ex) {
+                Logger.getLogger(AppFrase.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }//GEN-LAST:event_txtLugarKeyReleased
 
@@ -227,8 +240,13 @@ public class AppFrase extends javax.swing.JFrame {
         try {
             int cantidad = Integer.parseInt(txtFrase.getText());
             for (int i = 0; i < cantidad; i++) {
-                String frase = d.generarFrase();
-                taFrases.append(frase);
+                String frase = "";
+                try {
+                    frase = d.generarFrase();
+                } catch (SQLException ex) {
+                    Logger.getLogger(AppFrase.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                taFrases.append(frase + "\n"+"\n");
             }
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "Ingrese solo numeros en la cantidad de frase");
@@ -244,7 +262,7 @@ public class AppFrase extends javax.swing.JFrame {
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-        String mensaje=UIManager.getSystemLookAndFeelClassName();
+        String mensaje = UIManager.getSystemLookAndFeelClassName();
         try {
             UIManager.setLookAndFeel(mensaje);
         } catch (ClassNotFoundException ex) {
@@ -275,7 +293,6 @@ public class AppFrase extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblAccion;
-    private javax.swing.JLabel lblFrases;
     private javax.swing.JLabel lblLugar;
     private javax.swing.JLabel lblPersonaje;
     private javax.swing.JTextArea taFrases;

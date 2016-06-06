@@ -42,10 +42,7 @@
                           </Group>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="lblLugar" min="-2" pref="24" max="-2" attributes="0"/>
-                              <Component id="lblFrases" alignment="1" min="-2" pref="24" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="lblLugar" min="-2" pref="24" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="txtFrase" min="-2" pref="52" max="-2" attributes="0"/>
@@ -105,10 +102,7 @@
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="txtFrase" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblFrases" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="txtFrase" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="btnGenerar" min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -174,8 +168,11 @@
       <SubComponents>
         <Component class="javax.swing.JTextArea" name="taFrases">
           <Properties>
+            <Property name="editable" type="boolean" value="false"/>
             <Property name="columns" type="int" value="20"/>
+            <Property name="lineWrap" type="boolean" value="true"/>
             <Property name="rows" type="int" value="5"/>
+            <Property name="wrapStyleWord" type="boolean" value="true"/>
           </Properties>
         </Component>
       </SubComponents>
@@ -204,15 +201,6 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblAccion">
-      <Properties>
-        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="0" green="0" red="ff" type="rgb"/>
-        </Property>
-        <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="#"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="lblFrases">
       <Properties>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="0" green="0" red="ff" type="rgb"/>
