@@ -40,3 +40,5 @@ insert into acciones values (null,'está durmiendo');
 
 insert into lugares values (null,'en la Playa');
 insert into lugares values (null,'en el Cerro');
+
+select max(id) from personajes;

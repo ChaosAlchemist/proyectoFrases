@@ -6,7 +6,7 @@
 package gui;
 
 import bd.Data;
-import data.Personaje;
+import data.*;
 import java.awt.event.KeyEvent;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -200,7 +200,7 @@ public class AppFrase extends javax.swing.JFrame {
         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
             String personaje=txtPersonaje.getText();
             Personaje p=new Personaje(personaje);
-            d.insertar(personaje,1);
+            d.insertar(p);
             txtPersonaje.setText(null);
         }
     }//GEN-LAST:event_txtPersonajeKeyReleased
@@ -208,7 +208,8 @@ public class AppFrase extends javax.swing.JFrame {
     private void txtAccionKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAccionKeyReleased
         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
             String accion=txtAccion.getText();
-            //d.agregarAccion(accion);
+            Accion a=new Accion(accion);
+            d.insertar(a);
             txtAccion.setText(null);
         }
     }//GEN-LAST:event_txtAccionKeyReleased
@@ -216,21 +217,21 @@ public class AppFrase extends javax.swing.JFrame {
     private void txtLugarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtLugarKeyReleased
         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
             String lugar=txtLugar.getText();
-            //d.agregarLugar(lugar);
+            Lugar l=new Lugar(lugar);
+            d.insertar(l);
             txtLugar.setText(null);
         }
     }//GEN-LAST:event_txtLugarKeyReleased
 
     private void btnGenerarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerarActionPerformed
         try {
-            
+            int cantidad = Integer.parseInt(txtFrase.getText());
+            for (int i = 0; i < cantidad; i++) {
+                String frase = d.generarFrase();
+                taFrases.append(frase);
+            }
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "Ingrese solo numeros en la cantidad de frase");
-        }
-        
-        int cantidad=Integer.parseInt(txtFrase.getText());
-        for(int i=0; i<cantidad; i++){
-            String frase=d.generarFrase();
         }
     }//GEN-LAST:event_btnGenerarActionPerformed
 
