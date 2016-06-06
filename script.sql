@@ -2,7 +2,7 @@ create database db_frases;
 use db_frases;
 
 create table personajes(
-	id int auto_increment,
+    id int auto_increment,
     personaje varchar(30),
     primary key (id)
 );
@@ -20,7 +20,7 @@ create table lugar(
 );
 
 create table frases(
-	id int auto_increment,
+    id int auto_increment,
     idPersonaje int,
     idAccion int,
     idLugar int,

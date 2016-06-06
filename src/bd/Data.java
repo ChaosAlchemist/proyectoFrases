@@ -5,10 +5,24 @@
  */
 package bd;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 /**
  *
  * @author Emilio
  */
 public class Data {
+    private Conexion c;
+    private String query;
+    private ResultSet rs;    
     
+    public Data() throws SQLException{
+        c = new Conexion(
+            "localhost", //servidor
+            "db_frases", //base de datos 
+            "root", //permiso
+            "123456" //clave
+        );
+    }    
 }

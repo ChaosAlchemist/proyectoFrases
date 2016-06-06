@@ -5,7 +5,13 @@
  */
 package gui;
 
+import bd.Data;
+import data.Personaje;
 import java.awt.event.KeyEvent;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
 /**
@@ -13,12 +19,18 @@ import javax.swing.UIManager;
  * @author Emilio
  */
 public class AppFrase extends javax.swing.JFrame {
+    private Data d;
 
     /**
      * Creates new form AppFrase
      */
     public AppFrase() {
         initComponents();
+        try {
+            d= new Data();
+        } catch (SQLException ex) {
+            System.out.println("Error de conexion: "+ex.getMessage());
+        }
     }
 
     /**
@@ -76,6 +88,11 @@ public class AppFrase extends javax.swing.JFrame {
         jLabel4.setText("Frases");
 
         btnGenerar.setText("Generar");
+        btnGenerar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGenerarActionPerformed(evt);
+            }
+        });
 
         taFrases.setColumns(20);
         taFrases.setRows(5);
@@ -182,7 +199,8 @@ public class AppFrase extends javax.swing.JFrame {
     private void txtPersonajeKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPersonajeKeyReleased
         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
             String personaje=txtPersonaje.getText();
-            //d.agregarPersonaje(personaje);
+            Personaje p=new Personaje(personaje);
+            d.insertar(personaje,1);
             txtPersonaje.setText(null);
         }
     }//GEN-LAST:event_txtPersonajeKeyReleased
@@ -202,6 +220,19 @@ public class AppFrase extends javax.swing.JFrame {
             txtLugar.setText(null);
         }
     }//GEN-LAST:event_txtLugarKeyReleased
+
+    private void btnGenerarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerarActionPerformed
+        try {
+            
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Ingrese solo numeros en la cantidad de frase");
+        }
+        
+        int cantidad=Integer.parseInt(txtFrase.getText());
+        for(int i=0; i<cantidad; i++){
+            String frase=d.generarFrase();
+        }
+    }//GEN-LAST:event_btnGenerarActionPerformed
 
     /**
      * @param args the command line arguments
