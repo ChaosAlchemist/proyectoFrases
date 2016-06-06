@@ -32,21 +32,33 @@ public class Data {
         if (o instanceof Personaje) {
             q = "insert into personajes values (null,'" + ((Personaje) o).getNombre() + "');";
         } else if (o instanceof Accion) {
-            q = "insert into accion values (null,'" + ((Accion) o).getAccion() + "');";
+            q = "insert into acciones values (null,'" + ((Accion) o).getAccion() + "');";
         } else {
-            q = "insert into lugar values (null,'" + ((Lugar) o).getLugar() + "');";
+            q = "insert into lugares values (null,'" + ((Lugar) o).getLugar() + "');";
         }
 
         c.ejecutar(q);
     }
-    
 
-    public String generarFrase(int id) {
+    public String generarFrase(int id) throws SQLException {
         String frase = "";
-        q = "select nombre from personaje where id = "+id;
+        // Nombre        
+        q = "select nombre from personajes where id = " + id;
+        c.ejecutarSelect(q);
+        frase += q;
+
+        // Acción        
+        q = "select accion from acciones where id = " + id;
+        c.ejecutarSelect(q);
+        frase += q;
+
+        // Lugar        
+        q = "select lugar from lugares where id = " + id;
+        c.ejecutarSelect(q);
+        frase += q;
         
-        
-        
+        return frase;
+
     }
 
 }
