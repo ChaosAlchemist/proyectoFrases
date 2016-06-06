@@ -70,32 +70,49 @@ public class Data {
             q = "insert into personajes values (null,'" + ((Personaje) o).getNombre() + "');";
         } else if (o instanceof Accion) {
             q = "insert into acciones values (null,'" + ((Accion) o).getAccion() + "');";
-        } else {
+        } else if (o instanceof Lugar){
             q = "insert into lugares values (null,'" + ((Lugar) o).getLugar() + "');";
         }
-
+        
+        System.out.println(q);
         c.ejecutar(q);
     }
 
-    public String generarFrase(int id) throws SQLException {
+    public String generarFrase() throws SQLException {
         String frase = "";
         int idPersonaje=rd.nextInt(getRango(PERSONAJE));
         int idAccion=rd.nextInt(getRango(ACCION));
         int idLugar=rd.nextInt(getRango(LUGAR));
+        String palabra=null;
         // Nombre        
         q = "select nombre from personajes where id = " + idPersonaje;
-        c.ejecutarSelect(q);
-        frase += q;
+        rs=c.ejecutarSelect(q);
+        
+        if(rs.next()){
+            palabra=rs.getString(1);
+        }
+        
+        c.desconectar();
+        frase += palabra;
 
         // Acción        
         q = "select accion from acciones where id = " + idAccion;
-        c.ejecutarSelect(q);
-        frase += q;
-
+        rs=c.ejecutarSelect(q);
+        if(rs.next()){
+            palabra=rs.getString(1);
+        }
+        
+        c.desconectar();
+        frase += palabra;
         // Lugar        
         q = "select lugar from lugares where id = " + idLugar;
-        c.ejecutarSelect(q);
-        frase += q;
+        rs=c.ejecutarSelect(q);
+        if(rs.next()){
+            palabra=rs.getString(1);
+        }
+        
+        c.desconectar();
+        frase += palabra;
         
         return frase;
 
